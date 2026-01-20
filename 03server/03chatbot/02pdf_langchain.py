@@ -19,7 +19,7 @@ def extract_text_from_pdf(pdf_path:str)->str:
     text = "\n".join(doc.page_content for doc in documents)
     return text
 
-def spilt_text_into_chunks(text:str)->str:
+def split_text_into_chunks(text:str)->str:
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size = 2000,
         chunk_overlap = 200,
@@ -96,7 +96,7 @@ def main():
     print(f"토큰수 :  {len(enc.encode(pdf_text))}")
 
     # text => chunk로 나눔
-    chunks = spilt_text_into_chunks(pdf_text)
+    chunks = split_text_into_chunks(pdf_text)
     print(f"총 chunk수 : {len(chunks)}")
 
     # # 각 chunk 의 정보출력, enumerate(list, number) : number는 시작 숫자
